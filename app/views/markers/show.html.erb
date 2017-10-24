@@ -1,1 +1,15 @@
-<h1>This is the show page for an individual instance of your model.</h1>
+<h1><%=@marker.name%></h1>
+<h2>Location: <%=@marker.location%></h2>
+<p>Website: <%=@marker.website%></p>
+<h3>Details: <%=@marker.details%></h3></br></br>
+
+
+
+<a href="/markers/<%=@marker.id%>/edit">Edit marker</a></br></br>
+<a href="/markers"> All markers</a>
+<br></br>
+<br></br>
+<form action="/markers/<%=@marker.id%>/delete" method="post">
+  <input id="hidden" type="hidden" name="_method" value="delete">
+  <input class="btn btn-danger" type="submit" value="Delete Marker">
+</form>

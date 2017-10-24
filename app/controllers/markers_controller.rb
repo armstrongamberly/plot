@@ -21,19 +21,23 @@ class MarkersController < ApplicationController
 
   # POST: /markers
   post "/markers" do
-    # if params.has_value?("")
-    #   redirect '/markers/new'
-    # else
-    #   @marker = Marker.create(name: params[:name], location: params[:location], website: params[:website], details: params[:params] user_id: current_user.id)
-    #   @marker.save
-    #   redirect "/markers/#{@marker.id}"
-    # end
-    redirect "/markers"
+    if params.has_value?("")
+      redirect '/markers/new'
+    else
+      @marker = Marker.create(name: params[:name], location: params[:location], website: params[:website], details: params[:details],user_id: current_user.id)
+      @marker.save
+      redirect "/markers/#{@marker.id}"
+    end
   end
 
   # GET: /markers/5
   get "/markers/:id" do
-    erb :"/markers/show.html"
+    if logged_in?
+      @marker = Marker.find_by_id(params[:id])
+      erb :"/markers/show.html"
+    else
+      redirect '/login'
+    end
   end
 
   # GET: /markers/5/edit
