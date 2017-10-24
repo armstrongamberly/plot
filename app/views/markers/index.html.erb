@@ -1,1 +1,9 @@
-<h1>This is the Model's index page.</h1>
+<h1>Welcome, <%=@user.username%></h1>
+</br>
+
+<%Marker.all.each do |marker|%>
+<p><%=marker.content%></p>
+<%end%>
+</br></br>
+<p>Click <a href="/markers/new">here</a> to add a new plot</br></br>
+<p><a href="/logout">Logout</a></p>

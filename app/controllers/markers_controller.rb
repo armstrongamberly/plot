@@ -2,16 +2,32 @@ class MarkersController < ApplicationController
 
   # GET: /markers
   get "/markers" do
-    erb :"/markers/index.html"
+    if logged_in?
+      @user = User.find(session[:user_id])
+      erb :"/markers/index.html"
+    else
+      redirect "/login"
+    end
   end
 
   # GET: /markers/new
   get "/markers/new" do
-    erb :"/markers/new.html"
+    if logged_in?
+      erb :"/markers/new.html"
+    else
+      redirect "/login"
+    end
   end
 
   # POST: /markers
   post "/markers" do
+    # if params.has_value?("")
+    #   redirect '/markers/new'
+    # else
+    #   @marker = Marker.create(name: params[:name], location: params[:location], website: params[:website], details: params[:params] user_id: current_user.id)
+    #   @marker.save
+    #   redirect "/markers/#{@marker.id}"
+    # end
     redirect "/markers"
   end
 

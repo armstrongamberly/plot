@@ -13,4 +13,20 @@ class ApplicationController < Sinatra::Base
     erb :welcome
   end
 
+  get '/users/:slug' do
+    @user = User.find_by_slug(params[:slug])
+    redirect "/markers"
+  end
+
+  helpers do
+    def logged_in?
+      !!session[:user_id]
+    end
+
+    def current_user
+      @current_user ||= User.find_by(id: session[:user_id]) if session[:user_id]
+    end
+  end
+
+
 end
