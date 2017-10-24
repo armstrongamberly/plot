@@ -2,7 +2,7 @@
 </br>
 
 <%Marker.all.each do |marker|%>
-<ol><%=marker.name%></ol>
+<h4> <i class="icon-map-marker" ></i> <%=marker.name%> <a href="/markers/edit/<%=marker.id%>">edit</a></h4>
 <%end%>
 </br></br>
 <p>Click <a href="/markers/new">here</a> to add a new plot</br></br>
