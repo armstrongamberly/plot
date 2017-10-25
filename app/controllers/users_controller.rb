@@ -10,7 +10,7 @@ class UsersController < ApplicationController
     end
     @user = User.new(email: params["email"], username: params["username"], password: params["password"])
     @user.save
-    session[:id] = @user.id
+    session[:user_id] = @user.id
     redirect '/markers'
   end
 
