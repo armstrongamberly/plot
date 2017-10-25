@@ -1,6 +1,6 @@
 <h1>Plot.</h1>
 <h4>My Sinatra portfolio project for the Flatiron School</h4>
-<h2>About</h2>
+<h2>About</h2></br></br>
 <p> Plot is meant to be an interactive guide for travel inspiration-- a place to log that favorite taco stand or natural hot spring on your weekend getaway. Logging the stops and memories from your trip as Markers on your plot not only captures the name of that amazing art gallery you stumbled into by mistake but also helps other Plotters plan their trip itineraries.
 
 	Current features:
@@ -13,20 +13,22 @@
 	- Live map
 	- Additional data fields related to Plots and Markers
 	- Upload pictures and video
-	- Search tool for Plots based on Location</p>
+	- Search tool for Plots based on Location</p></br></br>
 
 <h2>Install</h2>
 
 <p>Fork and clone this repository, and then within the main directory execute
 
-$ bundle install</br>
-$ rake db:migrate</br>
-Then run:</br>
+     $ bundle install
+     $ rake db:migrate
+     
+Then run:
 
-$ shotgun</br>
-Open up a new browser tab and navigate to:</br>
+     $ shotgun
+     
+Open up a new browser tab and navigate to:
 
-localhost:9393</p>
+     localhost:9393
 
 <h2>Contributors</h2>
 
