@@ -1,6 +1,6 @@
 <h1>Plot.</h1>
 <h4>My Sinatra portfolio project for the Flatiron School</h4>
-<h2>About</h2></br></br>
+<h2>About</h2>
 Plot is meant to be an interactive guide for travel inspiration-- a place to log that favorite taco stand or natural hot spring from your weekend getaway. Logging the stops and memories from your trip as Markers on your Plot not only captures the name of that amazing art gallery you stumbled into by mistake but also helps other Plotters plan their trip itineraries.
 
 	Current features:
