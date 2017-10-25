@@ -32,7 +32,7 @@ Open up a new browser tab and navigate to:
 
 <h2>Contributors</h2>
 
-<p>Contributions are welcome</p>
+Contributions are welcome
 
 <h2>License</h2>
 
