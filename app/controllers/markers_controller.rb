@@ -42,16 +42,42 @@ class MarkersController < ApplicationController
 
   # GET: /markers/5/edit
   get "/markers/:id/edit" do
-    erb :"/markers/edit.html"
+    if logged_in?
+      @marker = Marker.find_by_id(params[:id])
+      if @marker.user_id == current_user.id
+        erb :"/markers/edit.html"
+      else
+        redirect '/markers'
+      end
+    else
+      redirect '/login'
+    end
   end
 
   # PATCH: /markers/5
   patch "/markers/:id" do
-    redirect "/markers/:id"
+    @marker = Marker.find_by_id(params[:id])
+    if params.has_value?("")
+      redirect "/markers/#{@marker.id}/edit"
+    else
+      @marker.update(name: params[:name], location: params[:location], website: params[:website], details: params[:details])
+      redirect "/markers/#{@marker.id}"
+    end
   end
 
   # DELETE: /markers/5/delete
   delete "/markers/:id/delete" do
-    redirect "/markers"
+    if logged_in?
+      @marker = Marker.find_by_id(params[:id])
+      if @marker.user_id == current_user.id
+        @marker.delete
+        redirect to "/users/#{@marker.user.slug}"
+      else
+        redirect '/markers'
+      end
+    else
+      redirect to '/login'
+    end
   end
+
 end

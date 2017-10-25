@@ -1,1 +1,11 @@
-<h1>Insert the form to edit an instance of your model here.</h1>
+<h1>Oops! Edit your marker below.</h1>
+
+<form action="/markers/<%=@marker.id%>" method="post">
+  <input id="hidden" type="hidden" name="_method" value="patch"> 
+  Name: <input type="text" name="name" id="name" value="<%=@marker.name%>"></input><br><br>
+  Location: <input type="text" name="location" id="location" value="<%=@marker.location%>"></input><br><br>
+  Website: <input type="text" name="website" id="website" value="<%=@marker.website%>"></input><br><br>
+  Details: <textarea rows="4" type="text" name="details" id="details" value="<%=@marker.details%>"> </textarea><br><br>
+
+  <input class="btn btn-small btn-info" type="submit" value="submit">
+</form>
