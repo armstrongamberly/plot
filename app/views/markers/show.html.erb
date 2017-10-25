@@ -5,11 +5,13 @@
 
 
 
-<a href="/markers/<%=@marker.id%>/edit">Edit marker</a></br></br>
-<a href="/markers"> All markers</a>
-<br></br>
-<br></br>
+<% if session[:user_id] == @marker.user_id %>
+<a class="btn btn-mini btn btn-warning" href="/markers/<%=@marker.id%>/edit">Edit marker</a></br></br>
 <form action="/markers/<%=@marker.id%>/delete" method="post">
   <input id="hidden" type="hidden" name="_method" value="delete">
-  <input class="btn btn-mini btn btn-danger" type="submit" value="Delete Marker">
+  <input class="btn btn-mini btn btn-danger" type="submit" value="Delete Marker"></br></br>
+<a class="btn btn-mini btn btn-info" href="/markers"> All markers</a></br></br>
 </form>
+<% end %>
+
+<p><a href="/logout">Logout</a></p>

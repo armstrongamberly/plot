@@ -53,13 +53,10 @@ class MarkersController < ApplicationController
   # PATCH: /markers/5
   patch "/markers/:id" do
     @marker = Marker.find_by_id(params[:id])
-    if params.has_value?("")
-      redirect "/markers/#{@marker.id}/edit"
-    else
       @marker.update(name: params[:name], location: params[:location], website: params[:website], details: params[:details])
       redirect "/markers/#{@marker.id}"
     end
-  end
+
 
   # DELETE: /markers/5/delete
   delete "/markers/:id/delete" do

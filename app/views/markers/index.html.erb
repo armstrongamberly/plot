@@ -3,7 +3,9 @@
 
 <%Marker.all.each do |marker|%>
 <ul>
-	<li><h4> <i class="icon-map-marker" ></i> <%=marker.name%> <a class="btn mini-btn btn-info" href="/markers/<%=marker.id%>/edit">edit</a></h4></li>
+	<li><h4> <i class="icon-map-marker" ></i> <%=marker.name%> 
+		<a class="btn mini-btn btn-info" href="/markers/<%=marker.id%>">details</a>
+	</h4></li>
 </ul>
 <%end%>
 </br></br>
