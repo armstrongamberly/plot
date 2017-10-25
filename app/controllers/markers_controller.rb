@@ -21,13 +21,9 @@ class MarkersController < ApplicationController
 
   # POST: /markers
   post "/markers" do
-    if params.has_value?("")
-      redirect '/markers/new'
-    else
       @marker = Marker.create(name: params[:name], location: params[:location], website: params[:website], details: params[:details],user_id: current_user.id)
       @marker.save
       redirect "/markers/#{@marker.id}"
-    end
   end
 
   # GET: /markers/5
