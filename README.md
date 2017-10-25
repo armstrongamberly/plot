@@ -1,7 +1,7 @@
 <h1>Plot.</h1>
 <h4>My Sinatra portfolio project for the Flatiron School</h4>
 <h2>About</h2></br></br>
-<p> Plot is meant to be an interactive guide for travel inspiration-- a place to log that favorite taco stand or natural hot spring from your weekend getaway. Logging the stops and memories from your trip as Markers on your Plot not only captures the name of that amazing art gallery you stumbled into by mistake but also helps other Plotters plan their trip itineraries.
+Plot is meant to be an interactive guide for travel inspiration-- a place to log that favorite taco stand or natural hot spring from your weekend getaway. Logging the stops and memories from your trip as Markers on your Plot not only captures the name of that amazing art gallery you stumbled into by mistake but also helps other Plotters plan their trip itineraries.
 
 	Current features:
 	- Signup for Plot
@@ -13,7 +13,7 @@
 	- Live map
 	- Additional data fields related to Plots and Markers
 	- Upload pictures and video
-	- Search tool for Plots based on Location</p></br></br>
+	- Search tool for Plots based on Location
 
 <h2>Install</h2>
 
@@ -36,4 +36,4 @@ Contributions are welcome
 
 <h2>License</h2>
 
-<p>The full MIT license can be found in this repo.</p>
+The full MIT license can be found in this repo.
