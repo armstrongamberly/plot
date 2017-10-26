@@ -1,17 +1,22 @@
+require 'rack-flash'
+
 class UsersController < ApplicationController
+
+  use Rack::Flash
 
   get '/signup' do
     erb :'/users/create_users'
   end
 
   post '/signup' do
-    if params.has_value?("")
+    if !params.has_value?("")
       redirect "/signup"
-    end
+    else
     @user = User.new(email: params["email"], username: params["username"], password: params["password"])
     @user.save
     session[:user_id] = @user.id
     redirect '/markers'
+    end
   end
 
   get '/login' do
