@@ -1,5 +1,5 @@
 class MarkersController < ApplicationController
-
+  use Rack::Flash
   # GET: /markers
   get "/markers" do
     if logged_in?
@@ -21,15 +21,15 @@ class MarkersController < ApplicationController
 
   # POST: /markers
   post "/markers" do
-      @marker = Marker.create(name: params[:name], location: params[:location], website: params[:website], details: params[:details],user_id: current_user.id)
-      @marker.save
-      redirect "/markers/#{@marker.id}"
+    @marker = Marker.create(name: params[:name], location: params[:location], website: params[:website], details: params[:details],user_id: current_user.id)
+    @marker.save
+    redirect "/markers/#{@marker.id}"
   end
 
   # GET: /markers/5
   get "/markers/:id" do
+    @marker = Marker.find_by_id(params[:id])
     if logged_in?
-      @marker = Marker.find_by_id(params[:id])
       erb :"/markers/show.html"
     else
       redirect '/login'
@@ -38,36 +38,35 @@ class MarkersController < ApplicationController
 
   # GET: /markers/5/edit
   get "/markers/:id/edit" do
-    if logged_in?
-      @marker = Marker.find_by_id(params[:id])
-      if @marker.user_id == current_user.id
+    @marker = Marker.find_by_id(params[:id])
+    if logged_in? && @marker.user_id == current_user.id
         erb :"/markers/edit.html"
-      else
-        redirect '/markers'
-      end
     else
-      redirect '/login'
+      flash[:notice] = "You must be the owner of a marker to edit."
+      redirect '/markers'
     end
   end
+
 
   # PATCH: /markers/5
   patch "/markers/:id" do
     @marker = Marker.find_by_id(params[:id])
+    if logged_in? && @marker.user_id == current_user.id
       @marker.update(name: params[:name], location: params[:location], website: params[:website], details: params[:details])
       redirect "/markers/#{@marker.id}"
+    else
+      flash[:notice] = "You must be the owner of a marker to edit."
+      redirect '/markers'
     end
+  end
 
 
   # DELETE: /markers/5/delete
   delete "/markers/:id/delete" do
-    if logged_in?
-      @marker = Marker.find_by_id(params[:id])
-      if @marker.user_id == current_user.id
+    @marker = Marker.find_by_id(params[:id])
+    if logged_in? && @marker.user_id == current_user.id
         @marker.delete
-        redirect to "/users/#{@marker.user.slug}"
-      else
         redirect '/markers'
-      end
     else
       redirect to '/login'
     end

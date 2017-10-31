@@ -1,17 +1,18 @@
 <h1><%=@marker.name%></h1>
 <h2>Location: <%=@marker.location%></h2>
 <p>Website: <%=@marker.website%></p>
-<h3>Details: <%=@marker.details%></h3></br></br>
+<h3>Details: <%=@marker.details%></h3><br><br>
 
 
 
 <% if session[:user_id] == @marker.user_id %>
-<a class="btn btn-mini btn btn-warning" href="/markers/<%=@marker.id%>/edit">Edit marker</a></br></br>
+<a class="btn btn-mini btn btn-warning" href="/markers/<%=@marker.id%>/edit">Edit marker</a><br><br>
 <form action="/markers/<%=@marker.id%>/delete" method="post">
   <input id="hidden" type="hidden" name="_method" value="delete">
-  <input class="btn btn-mini btn btn-danger" type="submit" value="Delete Marker"></br></br>
-<a class="btn btn-mini btn btn-info" href="/markers"> All markers</a></br></br>
+  <input class="btn btn-mini btn btn-danger" type="submit" value="Delete Marker"><br><br>
 </form>
 <% end %>
+<a class="btn btn-mini btn btn-info" href="/markers"> All markers</a><br><br>
+
 
 <p><a href="/logout">Logout</a></p>

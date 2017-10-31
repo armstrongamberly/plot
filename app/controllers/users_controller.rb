@@ -1,7 +1,4 @@
-require 'rack-flash'
-
 class UsersController < ApplicationController
-
   use Rack::Flash
 
   get '/signup' do
@@ -9,7 +6,7 @@ class UsersController < ApplicationController
   end
 
   post '/signup' do
-    if !params.has_value?("")
+    if params.has_value?("")
       redirect "/signup"
     else
     @user = User.new(email: params["email"], username: params["username"], password: params["password"])

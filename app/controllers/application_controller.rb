@@ -1,6 +1,8 @@
 require './config/environment'
+require 'rack-flash'
 
 class ApplicationController < Sinatra::Base
+  use Rack::Flash
 
   configure do
     set :public_folder, 'public'
@@ -11,11 +13,6 @@ class ApplicationController < Sinatra::Base
 
   get "/" do
     erb :welcome
-  end
-
-  get '/users/:slug' do
-    @user = User.find_by_slug(params[:slug])
-    redirect "/markers"
   end
 
   helpers do
