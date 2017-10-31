@@ -6,14 +6,10 @@ class UsersController < ApplicationController
   end
 
   post '/signup' do
-    if params.has_value?("")
-      redirect "/signup"
-    else
-    @user = User.new(email: params["email"], username: params["username"], password: params["password"])
-    @user.save
-    session[:user_id] = @user.id
-    redirect '/markers'
-    end
+      @user = User.new(email: params["email"], username: params["username"], password: params["password"])
+      @user.save
+      session[:user_id] = @user.id
+      redirect '/markers'
   end
 
   get '/login' do
@@ -26,6 +22,7 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       redirect "/markers"
     else
+      flash[:message] = "Something about that didn't seem right. Try logging in again or click the link below to sign up."
       redirect "/login"
     end
   end

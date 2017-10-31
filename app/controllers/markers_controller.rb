@@ -15,15 +15,20 @@ class MarkersController < ApplicationController
     if logged_in?
       erb :"/markers/new.html"
     else
+      flash[:message] = "Please log in first!"
       redirect "/login"
     end
   end
 
   # POST: /markers
   post "/markers" do
-    @marker = Marker.create(name: params[:name], location: params[:location], website: params[:website], details: params[:details],user_id: current_user.id)
-    @marker.save
-    redirect "/markers/#{@marker.id}"
+    if logged_in?
+      @marker = Marker.create(name: params[:name], location: params[:location], website: params[:website], details: params[:details],user_id: current_user.id)
+      @marker.save
+      redirect "/markers/#{@marker.id}"
+    else
+      redirect "/login"
+    end
   end
 
   # GET: /markers/5
@@ -42,7 +47,7 @@ class MarkersController < ApplicationController
     if logged_in? && @marker.user_id == current_user.id
         erb :"/markers/edit.html"
     else
-      flash[:notice] = "You must be the owner of a marker to edit."
+      flash[:message] = "You must be the owner of a marker to edit."
       redirect '/markers'
     end
   end
@@ -55,7 +60,7 @@ class MarkersController < ApplicationController
       @marker.update(name: params[:name], location: params[:location], website: params[:website], details: params[:details])
       redirect "/markers/#{@marker.id}"
     else
-      flash[:notice] = "You must be the owner of a marker to edit."
+      flash[:message] = "You must be the owner of a marker to edit."
       redirect '/markers'
     end
   end

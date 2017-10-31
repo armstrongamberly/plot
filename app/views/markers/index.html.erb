@@ -1,17 +1,16 @@
-<% if flash.has?(:message) %>
-  <%= flash[:message] %>
-<% end %>
-
 <h1>Hey <%=@user.username%>!</h1>
 </br>
 
 <%Marker.all.each do |marker|%>
 <ul>
-	<li><h4> <i class="icon-map-marker" ></i> <%=marker.name%> 
+	<li><h4> <i class="icon-map-marker" ></i> <%=marker.name%>
 		<a class="btn mini-btn btn-info" href="/markers/<%=marker.id%>">details</a>
 	</h4></li>
 </ul>
 <%end%><br><br>
+<strong class="text-error"><% if flash.has?(:message) %>
+  <%= flash[:message] %>
+<% end %></strong><br><br>
 
 <p>Click <a href="/markers/new">here</a> to add a new marker<br><br>
 <p><a href="/logout">Logout</a></p>

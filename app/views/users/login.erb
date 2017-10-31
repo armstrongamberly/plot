@@ -6,5 +6,9 @@
   Password: <input type="password" name="password" id="password" required></input><br><br>
   <input class="btn btn-primary" type="submit" value="submit"><br><br>
 </div>
+<strong class="text-error">
+	<% if flash.has?(:message) %>
+  <%= flash[:message] %>
+<% end %></strong><br><br>
   Follow this <a href="/signup">link</a> to get signed up!
 </form>
