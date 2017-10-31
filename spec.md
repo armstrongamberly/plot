@@ -9,7 +9,7 @@ x Include at least one has_many relationship (x has_many y e.g. User has_many Po
 x Include user accounts - yes
 x Ensure that users can't modify content created by other users - yes
 x Include user input validations - yes, validates unique e-mail at signup. also used "required" in html/css for certain fields
- Display validation failures to user with error message (example form URL e.g. /posts/new)
+x Display validation failures to user with error message (example form URL e.g. /posts/new) - yes, used "required" in html and used flash messages for markers/new and markers/:id/edit
 x Your README.md includes a short description, install instructions, a contributors guide and a link to the license for your code
 Confirm
 
