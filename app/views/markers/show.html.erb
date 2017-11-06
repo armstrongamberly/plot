@@ -9,11 +9,35 @@
 <a class="btn btn-mini btn btn-warning" href="/markers/<%=@marker.id%>/edit">Edit marker</a><br><br>
 <form action="/markers/<%=@marker.id%>/delete" method="post">
   <input id="hidden" type="hidden" name="_method" value="delete">
-  <input class="btn btn-mini btn btn-danger" type="submit" value="Delete Marker"><br><br>
-</form>
+  <input class="btn btn-mini btn btn-danger" type="submit" value="Delete Marker"><br>
+</form> 
 <% end %>
-
-<a class="btn btn-mini btn btn-info" href="/markers"> All markers</a><br><br>
-
+  <a class="btn btn-mini btn btn-info" href="/markers"> All markers</a><br><br>
+<style>
+      #map {
+        height: 400px;
+        width: 100%;
+       }
+    </style>
+  <body>
+    <h3>Coming Soon!</h3>
+    <div id="map"></div>
+    <script>
+      function initMap() {
+        var atlanta = {lat: 33.7681615, lng: -84.3652038};
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 13,
+          center: atlanta
+        });
+        var marker = new google.maps.Marker({
+          position: atlanta,
+          map: map
+        });
+      }
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?AIzaSyC8LnY1K43gLr-t8EUHGf7EB-EXxmiZTbQ&callback=initMap">
+    </script>
+  </body><br><br>
 
 <p><a href="/logout">Logout</a></p>

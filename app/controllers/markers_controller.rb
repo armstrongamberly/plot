@@ -45,7 +45,7 @@ class MarkersController < ApplicationController
   get "/markers/:id/edit" do
     @marker = Marker.find_by_id(params[:id])
     if logged_in? && @marker.user_id == current_user.id
-        erb :"/markers/edit.html"
+      erb :"/markers/edit.html"
     else
       flash[:message] = "You must be the owner of a marker to edit."
       redirect '/markers'
@@ -70,8 +70,8 @@ class MarkersController < ApplicationController
   delete "/markers/:id/delete" do
     @marker = Marker.find_by_id(params[:id])
     if logged_in? && @marker.user_id == current_user.id
-        @marker.delete
-        redirect '/markers'
+      @marker.delete
+      redirect '/markers'
     else
       redirect to '/login'
     end
