@@ -43,12 +43,17 @@ class MarkersController < ApplicationController
 
   # GET: /markers/5/edit
   get "/markers/:id/edit" do
-    @marker = Marker.find_by_id(params[:id])
-    if logged_in? && @marker.user_id == current_user.id
-      erb :"/markers/edit.html"
+    if logged_in? 
+       @marker = Marker.find_by_id(params[:id])
+       if @marker.user_id == current_user.id
+          erb :"/markers/edit.html"
+       else
+        flash[:message] = "You must be the owner of a marker to edit."
+        redirect '/markers'
+       end
     else
       flash[:message] = "You must be the owner of a marker to edit."
-      redirect '/markers'
+      redirect '/login'
     end
   end
 

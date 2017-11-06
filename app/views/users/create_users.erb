@@ -1,11 +1,17 @@
 <h1>Let's get you signed up</h1>
 
+<strong class="text-error">
+	<% if flash.has?(:message) %>
+  		<%= flash[:message] %>
+	<% end %>
+</strong>
+<br>
+<br>
 
 <form class="form-horizontal" action="/signup" method="POST">
   Email: <input type="text" name="email" id="email" required></input><br><br>
   Username: <input type="text" name="username" id="username" required></input><br><br>
   Password: <input type="password" name="password" id="password" required></input><br><br>
   <input class="btn btn-primary" type="submit" value="signup"><br><br>
-
-  Already have a <a href="/login">login</a>?
 </form>
+Already have a <a href="/login">login</a>?
